@@ -1,27 +1,18 @@
 ﻿
 using UdonSharp;
 using UnityEngine;
-using UnityEngine.UIElements;
-// using VRC.SDKBase;
-// using VRC.Udon;
 
 namespace nyx.obj {
     public class rotate : UdonSharpBehaviour {
 
         public GameObject gameObj;
         public float angleX,angleY,angleZ;
-        private bool rotateEnabled = false;
-
-        private void Start() {
-            float currentDelta = Time.deltaTime;
-            angleX *= currentDelta;
-            angleX *= currentDelta;
-            angleX *= currentDelta;
-        }
+        public bool rotateEnabled = false;
 
         public void Update() {
+            float d = Time.deltaTime;
             if(rotateEnabled) {
-                gameObj.transform.Rotate(angleX, angleY, angleZ);
+                gameObj.transform.Rotate(angleX * d, angleY * d, angleZ * d);
             }
         }
 
