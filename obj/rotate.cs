@@ -1,6 +1,7 @@
 ﻿
 using UdonSharp;
 using UnityEngine;
+using UnityEngine.UIElements;
 // using VRC.SDKBase;
 // using VRC.Udon;
 
@@ -11,9 +12,10 @@ namespace nyx.obj {
         private bool spin = false;
 
         public void Update() {
+            float rotAngle = 90f * Time.deltaTime;
+            float noRotAngle = 0f;
             if(spin) {
-                gameObj.transform.Rotate(Vector3.up, 90f * Time.deltaTime);
-                gameObj.transform.Rotate(Vector3.right, 90f * Time.deltaTime);
+                gameObj.transform.Rotate(rotAngle, rotAngle, noRotAngle);
             }
         }
 
