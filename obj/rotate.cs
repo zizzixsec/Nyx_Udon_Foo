@@ -9,18 +9,24 @@ namespace nyx.obj {
     public class rotate : UdonSharpBehaviour {
 
         public GameObject gameObj;
-        private bool spin = false;
+        public float angleX,angleY,angleZ;
+        private bool rotateEnabled = false;
+
+        private void Start() {
+            float currentDelta = Time.deltaTime;
+            angleX *= currentDelta;
+            angleX *= currentDelta;
+            angleX *= currentDelta;
+        }
 
         public void Update() {
-            float rotAngle = 90f * Time.deltaTime;
-            float noRotAngle = 0f;
-            if(spin) {
-                gameObj.transform.Rotate(rotAngle, rotAngle, noRotAngle);
+            if(rotateEnabled) {
+                gameObj.transform.Rotate(angleX, angleY, angleZ);
             }
         }
 
         public override void Interact() {
-            spin = !spin;
+            rotateEnabled = !rotateEnabled;
         }
     }
 }
