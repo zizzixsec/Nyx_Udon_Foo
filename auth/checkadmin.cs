@@ -7,41 +7,43 @@ using VRC.Udon.Common.Interfaces;
 
 namespace nyx.auth {
     public class checkadmin : UdonSharpBehaviour {
-        public VRCUrl ListUrl;
-        public GameObject[] Objs;
-        public float Refresh = 60;
-        private string Response;
-        private string[] Results;
 
-        private bool IsAdmin;
-        private string localName;
+        public UdonSharpBehaviour m_Target;
+        public VRCUrl m_Url;
+        public GameObject[] m_Objs;
+        private string m_Response;
+        private string[] m_Results;
 
-        private void Start() {
-            localName = Networking.LocalPlayer.displayName;
+        private bool m_IsAdmin;
+        private string m_localName;
+
+
+        private void _CheckAdmin() {
+            m_localName = Networking.LocalPlayer.displayName;
             _DownloadList();
         }
 
         public void _DownloadList() {
-            VRCStringDownloader.LoadUrl(ListUrl, (IUdonEventReceiver)this);
-            SendCustomEventDelayedSeconds(nameof(_DownloadList), Refresh);
+            VRCStringDownloader.LoadUrl(m_Url, (IUdonEventReceiver)this);
+            SendCustomEvent(nameof(_DownloadList));
         }
 
         public override void OnStringLoadSuccess(IVRCStringDownload result) {
-            Response = result.Result;
-            Results = Response.Split( new string[] {"\r","\n"}, StringSplitOptions.RemoveEmptyEntries);
+            m_Response = result.Result;
+            m_Results = m_Response.Split( new string[] {"\r","\n"}, StringSplitOptions.RemoveEmptyEntries);
 
-            IsAdmin = false;
-            foreach(string r in Results) {
-                if(r == localName) {
-                    IsAdmin = true;
+            m_IsAdmin = false;
+            foreach(string r in m_Results) {
+                if(r == m_localName) {
+                    m_IsAdmin = true;
                     break;
                 }
             }
 
-            Debug.Log("Admin Status:" + IsAdmin);
+            Debug.Log("Admin Status:" + m_IsAdmin);
 
-            foreach(GameObject obj in Objs) {
-                obj.SetActive(IsAdmin);
+            foreach(GameObject obj in m_Objs) {
+                obj.SetActive(m_IsAdmin);
             }
         }
 
