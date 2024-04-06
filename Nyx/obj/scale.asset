@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c333ccfdd0cbdbc4ca30cef2dd6e6b9b, type: 3}
-  m_Name: contextuals
+  m_Name: scale
   m_EditorClassIdentifier: 
-  serializedUdonProgramAsset: {fileID: 11400000, guid: 67821fb5fd672d3488cc88c5a14ad797,
+  serializedUdonProgramAsset: {fileID: 11400000, guid: ec9d139579e11a348aede209435d7cf0,
     type: 2}
   udonAssembly: 
   assemblyError: 
-  sourceCsScript: {fileID: 11500000, guid: 6688e688594596041b487ef50878496b, type: 3}
+  sourceCsScript: {fileID: 11500000, guid: d162a75936ef2ac449f6222d2e401e88, type: 3}
   scriptVersion: 2
-  compiledVersion: 0
+  compiledVersion: 2
   behaviourSyncMode: 0
   hasInteractEvent: 0
-  scriptID: 0
+  scriptID: -2641590648756344244
   serializationData:
     SerializedFormat: 2
     SerializedBytes: 
@@ -32,5 +32,22 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes:
     - Name: fieldDefinitions
-      Entry: 6
+      Entry: 7
+      Data: 0|System.Collections.Generic.Dictionary`2[[System.String, mscorlib],[UdonSharp.Compiler.FieldDefinition,
+        UdonSharp.Editor]], mscorlib
+    - Name: comparer
+      Entry: 7
+      Data: 1|System.Collections.Generic.GenericEqualityComparer`1[[System.String,
+        mscorlib]], mscorlib
+    - Name: 
+      Entry: 8
+      Data: 
+    - Name: 
+      Entry: 12
+      Data: 0
+    - Name: 
+      Entry: 13
+      Data: 
+    - Name: 
+      Entry: 8
       Data: 
